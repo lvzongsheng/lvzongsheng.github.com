@@ -11,4 +11,5 @@ categories:
 这里是他的博文链接，对于想安装和定制Octopress的童鞋非常有指导作用。<br/>
 [在github上搭建octopress博客 Mac](http://biaobiaoqi.me/blog/2013/03/21/building-octopress-in-github-mac/)和[定制Octopress](http://biaobiaoqi.me/blog/2013/07/10/decorate-octopress/)<br/>
 朋友可以参考以上博文来安装和定制Octopress
+<!-- more -->
 ##2 Octopress的定制
