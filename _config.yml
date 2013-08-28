@@ -3,9 +3,9 @@
 # ----------------------- #
 
 url: http://lvzongsheng.github.io
-title: My Octopress Blog
-subtitle: A blogging framework for hackers.
-author: Your Name
+title: Coco
+subtitle: A blog for Recording.
+author: Coco
 simple_search: http://google.com/search
 description:
 
@@ -70,7 +70,7 @@ github_skip_forks: true
 
 # Twitter
 twitter_user:
-twitter_tweet_button: true
+twitter_tweet_button: false
 
 # Google +1
 google_plus_one: false
@@ -90,11 +90,24 @@ delicious_user:
 delicious_count: 3
 
 # Disqus Comments
-disqus_short_name:
+disqus_short_name: 
 disqus_show_comment_count: false
+
+# Juvia Comments
+juvia_site_key: 
+juvia_host: 
 
 # Google Analytics
 google_analytics_tracking_id:
 
 # Facebook Like
 facebook_like: false
+
+# comment and share
+comment_and_share: true
+
+# page share
+sharing: true
+
+# page comment
+comment: true
