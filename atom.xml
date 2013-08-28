@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Coco]]></title>
+  <link href="http://lvzongsheng.github.io/atom.xml" rel="self"/>
+  <link href="http://lvzongsheng.github.io/"/>
+  <updated>2013-08-29T00:08:49+08:00</updated>
+  <id>http://lvzongsheng.github.io/</id>
+  <author>
+    <name><![CDATA[Coco]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[octopress_setup]]></title>
+    <link href="http://lvzongsheng.github.io/blog/2013/08/28/octopress-setup/"/>
+    <updated>2013-08-28T23:34:00+08:00</updated>
+    <id>http://lvzongsheng.github.io/blog/2013/08/28/octopress-setup</id>
+    <content type="html"><![CDATA[<p>接触Github有一段时间了，知道Octopress也有一段时间，只是一直没有把它们整合，搭建一个自己的博客。最近自己过得过于混乱，想有个自己的博客来记录生活上的点点滴滴，所以就动手了……</p>
+
+<h2>1 Octopress的安装</h2>
+
+<p>非常感谢室友biaobiaoqi的分享，使自己在Octopress的安装上没有走弯路。<br/>
+这里是他的博文链接，对于想安装和定制Octopress的童鞋非常有指导作用。<br/>
+<a href="http://biaobiaoqi.me/blog/2013/03/21/building-octopress-in-github-mac/">在github上搭建octopress博客 Mac</a>和<a href="http://biaobiaoqi.me/blog/2013/07/10/decorate-octopress/">定制Octopress</a><br/>
+朋友可以参考以上博文来安装和定制Octopress</p>
+
+<h2>2 Octopress的定制</h2>
+]]></content>
+  </entry>
+  
+</feed>
