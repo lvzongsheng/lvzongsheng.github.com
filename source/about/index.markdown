@@ -35,7 +35,7 @@ footer: true
 <a href="/images/about/pic5.jpg" class="fancybox" rel="gallery" title="摄于绍兴孔乙己酒家"><img src="/images/about/pic5_m.jpg" /></a>
 <a href="/images/about/pic4.jpg" class="fancybox" rel="gallery" title="摄于杭州云栖竹径"><img src="/images/about/pic4_m.jpg" /></a>
 ##Find Me...
-<iframe width="100%" height="550" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=550&fansRow=2&ptype=1&speed=0&skin=1&isTitle=1&noborder=0&isWeibo=0&isFans=0&uid=2623841475&verifier=a98ab59c&dpc=1"></iframe>
+<iframe width="100%" height="110" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=110&fansRow=2&ptype=1&speed=0&skin=1&isTitle=1&noborder=0&isWeibo=0&isFans=0&uid=2623841475&verifier=a98ab59c&dpc=1"></iframe>
 
  
 
