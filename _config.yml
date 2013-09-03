@@ -98,7 +98,7 @@ juvia_site_key:
 juvia_host: 
 
 # Google Analytics
-google_analytics_tracking_id:
+google_analytics_tracking_id: UA-28178351-1
 
 # Facebook Like
 facebook_like: false

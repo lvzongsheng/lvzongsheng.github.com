@@ -13,3 +13,23 @@ categories:
 朋友可以参考以上博文来安装和定制Octopress
 <!-- more -->
 ##2 Octopress的定制
+###2.1 图片相册
+在个人主页中，我针对自己对摄影的爱好，专门配置了图片相册。我采用的是[FancyBox](http://fancyapps.com/fancybox/)的插件。同时也有人根据FancyBox定制了Octopress的第三方[插件](http://tritarget.org/blog/2012/05/07/integrating-photos-into-octopress-using-fancybox-and-plugin/)
+    1 Download the fancybox source to /source/fancybox
+    2 Add fancybox jquery to _include/custom/head.html
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
+    <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css" media="screen" />
+    <script type="text/javascript" src="/fancybox/jquery.fancybox.pack.js"></script>
+
+    <script>
+    $(document).ready(function() {
+        $('.fancybox').fancybox();
+    });
+    </script>
+    3 Add html code in your own page like this:
+    <a href="/images/about/pic2.jpg" class="fancybox" rel="gallery" title="摄于杭州钱塘江大桥"><img src="/images/about/pic2_m.jpg" /></a>
+    <a href="/images/about/pic4.jpg" class="fancybox" rel="gallery" title="摄于杭州云栖竹径"><img src="/images/about/pic4_m.jpg" /></a>
+    <a href="/images/about/pic5.jpg" class="fancybox" rel="gallery" title="摄于绍兴孔乙己酒家"><img src="/images/about/pic5_m.jpg" /></a>
+    <a href="/images/about/pic4.jpg" class="fancybox" rel="gallery" title="摄于杭州云栖竹径"><img src="/images/about/pic4_m.jpg" /></a>
+FancyBox除了图片之外，还支持视频等其他多媒体形式，要得到更多信息，可以参见官网。
+
