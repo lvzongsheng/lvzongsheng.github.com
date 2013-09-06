@@ -4,7 +4,7 @@
   <title><![CDATA[Coco]]></title>
   <link href="http://lvzongsheng.github.io/atom.xml" rel="self"/>
   <link href="http://lvzongsheng.github.io/"/>
-  <updated>2013-09-04T00:20:50+08:00</updated>
+  <updated>2013-09-06T10:34:35+08:00</updated>
   <id>http://lvzongsheng.github.io/</id>
   <author>
     <name><![CDATA[Coco]]></name>
@@ -12,6 +12,32 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[二叉树的遍历]]></title>
+    <link href="http://lvzongsheng.github.io/blog/2013/09/06/tree-traversals/"/>
+    <updated>2013-09-06T09:39:00+08:00</updated>
+    <id>http://lvzongsheng.github.io/blog/2013/09/06/tree-traversals</id>
+    <content type="html"><![CDATA[<h2>1 二叉树数据结构</h2>
+
+<p>二叉树数据结构一般有两种，数组和链式结构。</p>
+
+<h3>1.1 数组结构</h3>
+
+<p>我们一般是把数组下标为1的元素作为树的根节点，如果已知一个父节点为n，然后其左孩子为2n，右孩子为2n+1.<br/>优点：对于完全二叉树而言，数组结构简单而且最节省空间。<br/>缺点：对于一般的二叉树而言，比较浪费空间，同时数组结构的二叉树做插入和删除操作时，移动的节点较多。<br/>
+关于更多的顺序存储的知识，请<a href="http://student.zjzk.cn/course_ware/data_structure/web/shu/shu6.2.3.1.htm">参考</a>
+在实际的编程中，如果更多的情况是进行树的遍历并且树接近完全二叉树，则使用数组结构是比较合适的。</p>
+
+<h3>1.2 链式结构</h3>
+
+<p>链式结构是最一般化的树形结构的表示方法，其优点是可以表示最一般的树形结构，同时对树的查找，插入和删除代价小。缺点是实现难度稍微负责点，容易出错。</p>
+
+<h2>2 二叉树的遍历</h2>
+
+<p>树的遍历最常用是树的前序，中序，后序和层序遍历。在一般的算法题中，就是根据已经给定的两种遍历结果，求第三种遍历结果。只要掌握了各种遍历方法和树的表示形式，应该解题会比较通畅。<br/>
+关于上述题型的总结，可以参见<a href="http://biaobiaoqi.me/blog/2013/04/27/travsal-binary-tree/">二叉树的遍历（递归、非递归）分析</a>和<a href="http://biaobiaoqi.me/blog/2013/04/27/pat1020-pat1043-rebuild-binary-tree/">根据前中后序和层序重建二叉树</a></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[octopress_setup]]></title>
