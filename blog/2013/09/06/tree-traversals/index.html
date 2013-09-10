@@ -135,7 +135,8 @@
 <h2>2 二叉树的遍历</h2>
 
 <p>树的遍历最常用是树的前序，中序，后序和层序遍历。在一般的算法题中，就是根据已经给定的两种遍历结果，求第三种遍历结果。只要掌握了各种遍历方法和树的表示形式，应该解题会比较通畅。<br/>
-关于上述题型的总结，可以参见<a href="http://biaobiaoqi.me/blog/2013/04/27/travsal-binary-tree/">二叉树的遍历（递归、非递归）分析</a>和<a href="http://biaobiaoqi.me/blog/2013/04/27/pat1020-pat1043-rebuild-binary-tree/">根据前中后序和层序重建二叉树</a></p>
+关于上述题型的总结，可以参见<a href="http://biaobiaoqi.me/blog/2013/04/27/travsal-binary-tree/">二叉树的遍历（递归、非递归）分析</a>和<a href="http://biaobiaoqi.me/blog/2013/04/27/pat1020-pat1043-rebuild-binary-tree/">根据前中后序和层序重建二叉树</a><br/>这里总结一下二叉树遍历最一般使用的STL。
+在前中后序遍历中，最为常用的还是递归的实现，一般会使用stack或者queue。但在层序遍历中，我们使用的queue，而stack不能实现层序遍历。</p>
 </div>
 
 
