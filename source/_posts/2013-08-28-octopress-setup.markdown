@@ -14,6 +14,30 @@ categories:
 [在github上搭建octopress博客 Mac](http://biaobiaoqi.me/blog/2013/03/21/building-octopress-in-github-mac/)和[定制Octopress](http://biaobiaoqi.me/blog/2013/07/10/decorate-octopress/)<br/>
 朋友可以参考以上博文来安装和定制Octopress
 <!-- more -->
+下面是自己经常用到的Octopress及github的命令
+	#创建一篇博文
+	rake new_post["post title"] #octopress 将在工作目录的 source/_post/目录下生成相应的 markdown 文件。然后可以使用 mou 工具去修改编辑内容。
+
+	#生成预览
+	rake preview #可以通过 localhost:4000 在本机实时观察最新的编辑效果。
+
+	#在线发布
+	rake deploy #完成编辑后，可以将最新的内容部署到 github 上去。成功后，即可在线访问。
+
+	#向 github 提交源文件更新
+	git add -A
+	git commit -m "提交内容"
+	git push origin source //source 是github上的一个分支
+Octopress可以Mou来进行快速和可视化编辑，下面是Mou最常用的语法。
+
+* 加粗和斜体 (单词前后包围**或者__)
+* 有序的列表 （“1.”+space）
+* 无顺序的列表 （“*”+space或者“-”+space）
+* 断行 （2或者更多的空格）
+* 内嵌的代码 （tab或者4个空格）
+* 划掉单词 （单词前后包围~~）
+更多信息，请参见[Mou](http://mouapp.com)
+
 ##2 Octopress的定制
 ###2.1 图片相册
 在个人主页中，我针对自己对摄影的爱好，专门配置了图片相册。我采用的是[FancyBox](http://fancyapps.com/fancybox/)的插件。同时也有人根据FancyBox定制了Octopress的第三方[插件](http://tritarget.org/blog/2012/05/07/integrating-photos-into-octopress-using-fancybox-and-plugin/)
