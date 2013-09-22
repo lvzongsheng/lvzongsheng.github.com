@@ -6,7 +6,7 @@ comments: false
 sharing: false
 footer: true
 ---
-![My Poem](/images/about/me.jpg)
+![My Poem](https://dl.dropboxusercontent.com/u/56666600/Octopress/me.jpg)
 ##Study In…
 <table>
 	<tr>
@@ -30,10 +30,10 @@ footer: true
 ##Interests…
 我有很多想过而没做或者正在想的事情，像摄影，轮滑，骑行。我不贪心，渐渐就把重心转到摄影上了，在图片发现生活的另一面。下面是我的部分作品。  
 	
-<a href="/images/about/pic2.jpg" class="fancybox" rel="gallery" title="摄于杭州钱塘江大桥"><img src="/images/about/pic2_m.jpg" /></a>
-<a href="/images/about/pic4.jpg" class="fancybox" rel="gallery" title="摄于杭州云栖竹径"><img src="/images/about/pic4_m.jpg" /></a>
-<a href="/images/about/pic5.jpg" class="fancybox" rel="gallery" title="摄于绍兴孔乙己酒家"><img src="/images/about/pic5_m.jpg" /></a>
-<a href="/images/about/pic4.jpg" class="fancybox" rel="gallery" title="摄于杭州云栖竹径"><img src="/images/about/pic4_m.jpg" /></a>
+<a href="https://dl.dropboxusercontent.com/u/56666600/Octopress/pic2.jpg" class="fancybox" rel="gallery" title="摄于杭州钱塘江大桥"><img src="https://dl.dropboxusercontent.com/u/56666600/Octopress/pic2_m.jpg" /></a>
+<a href="https://dl.dropboxusercontent.com/u/56666600/Octopress/pic4.jpg" class="fancybox" rel="gallery" title="摄于杭州云栖竹径"><img src="https://dl.dropboxusercontent.com/u/56666600/Octopress/pic4_m.jpg" /></a>
+<a href="https://dl.dropboxusercontent.com/u/56666600/Octopress/pic5.jpg" class="fancybox" rel="gallery" title="摄于绍兴孔乙己酒家"><img src="https://dl.dropboxusercontent.com/u/56666600/Octopress/pic5_m.jpg" /></a>
+<a href="https://dl.dropboxusercontent.com/u/56666600/Octopress/pic1.jpg" class="fancybox" rel="gallery" title="摄于云南拉市海"><img src="https://dl.dropboxusercontent.com/u/56666600/Octopress/pic1_m.jpg" /></a>
 ##Find Me...
 <iframe width="100%" height="110" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=110&fansRow=2&ptype=1&speed=0&skin=1&isTitle=1&noborder=0&isWeibo=0&isFans=0&uid=2623841475&verifier=a98ab59c&dpc=1"></iframe>
 
