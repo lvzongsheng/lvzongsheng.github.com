@@ -5,12 +5,12 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>二叉树的遍历 - Coco</title>
+  <title>正则表达式 - Coco</title>
   <meta name="author" content="Coco">
   
   
-  <meta name="description" content="1 二叉树数据结构 二叉树数据结构一般有两种，数组和链式结构。 1.1 数组结构 我们一般是把数组下标为1的元素作为树的根节点，如果已知一个父节点为n，然后其左孩子为2n，右孩子为2n+1.优点：对于完全二叉树而言，数组结构简单而且最节省空间。缺点：对于一般的二叉树而言，比较浪费空间， &hellip;">
-  <meta name="keywords" content="cocolighter algorithms data structure computer">
+  <meta name="description" content="正则表达式 分组 环视 贪婪 匹配">
+  <meta name="keywords" content="正则表达式 分组 环视 贪婪 匹配">
 
   <!-- http://t.co/dKP3o1e -->
   <meta name="HandheldFriendly" content="True">
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://lvzongsheng.github.io/blog/2013/09/06/tree-traversals">
+  <link rel="canonical" href="http://lvzongsheng.github.io/blog/2013/09/22/regular-expression">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   
@@ -92,7 +92,7 @@
   
   <header>
     
-      <h1 class="entry-title">二叉树的遍历</h1>
+      <h1 class="entry-title">正则表达式</h1>
     
     
       <p class="meta">
@@ -108,35 +108,79 @@
   
 
 
-<time datetime="2013-09-06T09:39:00+08:00" pubdate data-updated="true">Sep 6<span>th</span>, 2013</time>
+<time datetime="2013-09-22T07:14:00+08:00" pubdate data-updated="true">Sep 22<span>nd</span>, 2013</time>
         
       </p>
     
   </header>
 
 
-<div class="entry-content"><h2>1 二叉树数据结构</h2>
+<div class="entry-content"><h2>正则表达式</h2>
 
-<p>二叉树数据结构一般有两种，数组和链式结构。</p>
+<p>在对文本进行分析处理的时候，少不了会使用正则表达式进行匹配和替换。本文是对自己在学习正则表达式的一些总结。<br/>
+正则表达式定义：正则表达式是描述一组字符串的特征的模式，用来匹配特定的字符串。<br/>
+在介绍正则表达式之前，说几个在线的测试正则表达式的工具：<br/>
+ + <a href="http://www.regexpal.com">Regexpal</a><br/>
+它是一个在线的用Javascript实现的正则表达式处理器。它不是正则表达式的完整实现，因此功能并不完整，优点是简洁易用，易于上手。<br/>
+ + <a href="http://gskinner.com/RegExr">RegExr</a><br/>
+ RegExr内嵌在Flex3中且依赖于ActionScript正则表达式引擎，其使用的正则表达式与Javascript相似。
+ <!--more--></p>
 
-<h3>1.1 数组结构</h3>
+<h3>简单的模式匹配</h3>
 
-<p>我们一般是把数组下标为1的元素作为树的根节点，如果已知一个父节点为n，然后其左孩子为2n，右孩子为2n+1.<br/>优点：对于完全二叉树而言，数组结构简单而且最节省空间。<br/>缺点：对于一般的二叉树而言，比较浪费空间，同时数组结构的二叉树做插入和删除操作时，移动的节点较多。<br/>
-关于更多的顺序存储的知识，请<a href="http://student.zjzk.cn/course_ware/data_structure/web/shu/shu6.2.3.1.htm">参考</a>
-在实际的编程中，如果更多的情况是进行树的遍历并且树接近完全二叉树，则使用数组结构是比较合适的。</p>
+<pre><code>匹配字符串字面值 eg: abc 匹配abcde中的abc
+匹配数字 \d 或者 [0-9]
+匹配非数字字符 \D 或者 [^0-9] 或者 [^\d]
+匹配单词和非单词字符 \w 或者 [_a-zA-Z0-9]
+// \D和\w的区别\D会匹配空格、标点符号（引号、连字符、反斜杠、方括号）等字符，而\w不会，它只匹配字母、数字和下划线。
+匹配非单词字符 \W
+匹配空白符 \a 或者[ \t\n\r] 包括空格、制表符、换行符、回车符
+</code></pre>
 
-<!--more-->
+<p>在正则表达式中，有大小写的匹配符一般都是相反的作用，也可以使用^来进行取反。</p>
 
+<h3>边界</h3>
 
-<h3>1.2 链式结构</h3>
+<pre><code>行的起始和结束 ^ $
+单词边界与非单词边界 \b \B
+\\ \b是零宽度断言，表面山会匹配空格或者行起始，但实际上它匹配的是个零宽度的不存在的东西。
+使用元字符字面值 \Q \E eg:\Q$\E
+</code></pre>
 
-<p>链式结构是最一般化的树形结构的表示方法，其优点是可以表示最一般的树形结构，同时对树的查找，插入和删除代价小。缺点是实现难度稍微负责点，容易出错。</p>
+<p>零宽度断言是指匹配宽度为0，满足一定条件的断言。零宽度断言用于查找在某些内容（但不包括这些内容）之前或者之后的东西。所以像\b ^ $都是零宽度断言符。</p>
 
-<h2>2 二叉树的遍历</h2>
+<h3>选择、分组和后向引用</h3>
 
-<p>树的遍历最常用是树的前序，中序，后序和层序遍历。在一般的算法题中，就是根据已经给定的两种遍历结果，求第三种遍历结果。只要掌握了各种遍历方法和树的表示形式，应该解题会比较通畅。<br/>
-关于上述题型的总结，可以参见<a href="http://biaobiaoqi.me/blog/2013/04/27/travsal-binary-tree/">二叉树的遍历（递归、非递归）分析</a>和<a href="http://biaobiaoqi.me/blog/2013/04/27/pat1020-pat1043-rebuild-binary-tree/">根据前中后序和层序重建二叉树</a><br/>这里总结一下二叉树遍历最一般使用的STL。
-在前中后序遍历中，最为常用的还是递归的实现，一般会使用stack或者queue。但在层序遍历中，我们使用的queue，而stack不能实现层序遍历。</p>
+<p>选择使用的()中间用|分割，eg:(the|The|THE),值得注意的是使用()也是一次分组。<br/>
+捕获分组用的是()，可以通过后向引用重用捕获的内容，\1.<br/>
+非捕获分组用的是(?:)<br/>
+在实际的字符串匹配中，选择，分组和后向引用是非常常见的功能，所以建议大家好好学习并掌握。</p>
+
+<h3>量词</h3>
+
+<p>量词本身没有什么难度，但在实际的应用中还是会存在一下难度，其中很重要的是贪心与懒惰匹配。
+量词自身是贪心的，贪心的量词会先尝试匹配整个字符串，如果失败则退一个字符后再次尝试，这个就是正则匹配回溯的过程，所以整个运算量比较大。<br/>
+而懒惰的量词采用了另外一个策略，它从目标位置开始匹配，每次检查字符串的一个字符。懒惰量词需要在普通量词后面加一个？<br/>
+占有量词会覆盖整个目标然后尝试寻找匹配内容，但它只尝试一次，不会回溯。占有量词是在普通量词后面添加一个+<br/></p>
+
+<pre><code>举个简单的例子：“simple sample”
+贪婪模式 s.+e 匹配simple sample
+懒惰模式 s.+?e 匹配simple
+占有模式 s.++e 匹配失败
+</code></pre>
+
+<h3>环视</h3>
+
+<p>环视是一种非捕获分组，它根据某个模式之前或之后的内容匹配其他模式，环视也称为零宽度断言。<br/>
+环视包括正前瞻，反前瞻，正后顾，反后顾。</p>
+
+<pre><code>正前瞻：eg (?i)ancyent (?=marinere)
+反前瞻：eg (?i)ancyent (?!marinere)
+正后顾：eg (?i)(?&lt;=ancyent) marinere
+反后顾：eg (?i)(?&lt;!ancyent) marinere
+</code></pre>
+
+<p>本文提到的都是正则表达式中最常用，最重要的几个点，在实际使用中会衍生出各种复杂的表达式，归根到底正则表达式是一种组合的艺术，剖析来看没什么神奇之处，一旦组合到一起，便是让人眼花缭乱。</p>
 </div>
 
 
@@ -159,7 +203,7 @@
   
 
 
-<time datetime="2013-09-06T09:39:00+08:00" pubdate data-updated="true">Sep 6<span>th</span>, 2013</time>
+<time datetime="2013-09-22T07:14:00+08:00" pubdate data-updated="true">Sep 22<span>nd</span>, 2013</time>
       
 
 
@@ -191,10 +235,8 @@ var jiathis_config = {data_track_clickback:'true'};
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2013/08/28/octopress-setup/" title="Previous Post: octopress_setup">&laquo; octopress_setup</a>
+        <a class="basic-alignment left" href="/blog/2013/09/06/tree-traversals/" title="Previous Post: 二叉树的遍历">&laquo; 二叉树的遍历</a>
       
-      
-        <a class="basic-alignment right" href="/blog/2013/09/22/regular-expression/" title="Next Post: 正则表达式">正则表达式 &raquo;</a>
       
     </p>
   </footer>
