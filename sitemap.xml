@@ -28,4 +28,8 @@
         <loc>http://lvzongsheng.github.io/robots.txt</loc>
         <lastmod>2013-08-28T23:18:20+08:00</lastmod>
     </url>
+    <url>
+        <loc>http://lvzongsheng.github.io/search/</loc>
+        <lastmod>2013-09-26T19:20:01+08:00</lastmod>
+    </url>
 </urlset>
