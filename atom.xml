@@ -4,7 +4,7 @@
   <title><![CDATA[Coco]]></title>
   <link href="http://lvzongsheng.github.io/atom.xml" rel="self"/>
   <link href="http://lvzongsheng.github.io/"/>
-  <updated>2013-09-26T20:24:13+08:00</updated>
+  <updated>2013-09-26T20:25:34+08:00</updated>
   <id>http://lvzongsheng.github.io/</id>
   <author>
     <name><![CDATA[Coco]]></name>
@@ -251,6 +251,8 @@ keywords: cocolighter algorithms data structure computer
     插入Google自定义引擎的代码
 &lt;/div&gt;
 </code></pre>
+
+<p>最后推荐一个<a href="http://fis.io/ajax-google-custom-search-engine.html">博文</a>，它介绍使用ajax来更好的实现Google的自定义搜索引擎</p>
 ]]></content>
   </entry>
   
