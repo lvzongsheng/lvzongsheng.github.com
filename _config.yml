@@ -6,7 +6,7 @@ url: http://lvzongsheng.github.io
 title: Coco
 subtitle: A blog for Recording.
 author: Coco
-simple_search: http://google.com/search
+simple_search: /search
 description: cocolighter algorithms data structure computer
 keywords: cocolighter algorithms data structure computer
 
@@ -17,7 +17,7 @@ keywords: cocolighter algorithms data structure computer
 date_format: "ordinal"
 
 # RSS / Email (optional) subscription links (change if using something like Feedburner)
-subscribe_rss: /atom.xml
+subscribe_rss: 
 subscribe_email:
 # RSS feeds can list your email address if you like
 email:

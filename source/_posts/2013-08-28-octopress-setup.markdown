@@ -79,6 +79,21 @@ FancyBox除了图片之外，还支持视频等其他多媒体形式，要得到
     keywords: cocolighter algorithms data structure computer
 然后在source/_includes/head.html做如下修改    
 	{\% if page.keywords \%}<meta name="keywords" content="{{ page.keywords }}">{\% else if site.keywords\%}<meta name="keywords" content="{{ site.keywords }}">{\% endif \%}
-
+###2.3 使用google自定义搜索实现站内搜索
+虽有octopress默认的也是使用的google搜索，但是搜索效果很不友好，所以这里采用了Goolge的自定义搜索来实现站内搜索。<br/>
+首先我们需要去注册Google的账号，并创建[自定义搜索引擎](https://www.google.com/cse/)。<br/>
+在配置好搜素引擎后，获取搜索结果的代码，这里没有使用获取搜索框的代码。<br/>
+现在已经搞定了Google自定义搜索引擎，接下来我们需要对Octopress做一些修改。<br/>
+1 _config.yml
+	将http://google.com/search 改成/search
+2 创建新的search页面
+	rake new_page["search"]
+3 修改source/_include/navigation.html
+	去掉<input type="hidden" name="q" value="site:{{ site.url | shorthand_url }}" />
+4 在新建的search页面中加入Google自定义引擎中获取的代码
+	<div>
+		插入Google自定义引擎的代码
+	</div>
+最后推荐一个[博文](http://fis.io/ajax-google-custom-search-engine.html)，它介绍使用ajax来更好的实现Google的自定义搜索引擎
 
 
