@@ -4,7 +4,7 @@
   <title><![CDATA[Coco]]></title>
   <link href="http://lvzongsheng.github.io/atom.xml" rel="self"/>
   <link href="http://lvzongsheng.github.io/"/>
-  <updated>2013-11-20T20:22:35+08:00</updated>
+  <updated>2013-11-26T22:12:46+08:00</updated>
   <id>http://lvzongsheng.github.io/</id>
   <author>
     <name><![CDATA[Coco]]></name>
@@ -12,6 +12,32 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[ETL and Pentaho Data Integraton]]></title>
+    <link href="http://lvzongsheng.github.io/blog/2013/11/26/etl-and-pdi/"/>
+    <updated>2013-11-26T20:30:00+08:00</updated>
+    <id>http://lvzongsheng.github.io/blog/2013/11/26/etl-and-pdi</id>
+    <content type="html"><![CDATA[<p>ETL全称是Extract，Transform，Load，即数据的抽取，转化和转载。ETL在建立数据仓库中得作用十分巨大。简单来说，ETL就是把多个数据源的数据抽取出来进行一定的转化，最后把数据存入数据仓库。在实际的ETL过程中，T过程是最为重要的，其中涉及到数据的清洗，数据的转化，数据的归并等多种多样的操作。<br/>
+目前完全靠代码来实现ETL过程极为复杂，我们可以通过一些开源的工具来帮助我们设计ETL过程。本文讲介绍下Pentaho Data Integration这个ETL工具。具体请参考<a href="http://pentaho.com/">PDI</a><br/>
+下面是一份关于ETL和PDI相关的Presentation，可以作为参考。</p>
+
+<script async class="speakerdeck-embed" data-id="ce029c0038c301311e402ef68c3b02b3" data-ratio="1.33333333333333" src="http://lvzongsheng.github.io//speakerdeck.com/assets/embed.js"></script>
+
+
+<p>下载请点击<a href="http://cocodocuments.u.qiniudn.com/ETL.pptx">Here</a></p>
+
+<!--More-->
+
+
+<p>除了一些理论外，自己制作一个小的Demo来展示PDI的基本功能。</p>
+
+<script async class="speakerdeck-embed" data-id="3756d2c038d101311e402ef68c3b02b3" data-ratio="1.33333333333333" src="http://lvzongsheng.github.io//speakerdeck.com/assets/embed.js"></script>
+
+
+<p>下载PDI Demo文件请点击<a href="http://cocodocuments.u.qiniudn.com/Demo.ktr">Demo for Transformation</a>和<a href="http://cocodocuments.u.qiniudn.com/ETL.pptx">Demo for Job</a></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[正则表达式]]></title>
