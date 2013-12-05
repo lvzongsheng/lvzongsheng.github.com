@@ -1,0 +1,16 @@
+---
+layout: post
+title: "Apache, Tomcat, JBoss和Weblogic比较"
+date: 2013-11-29 18:49
+comments: true
+categories: 
+---
+每当提起Apache等，我相信有不少人也很难说清楚它们各自属于什么，今天抽空自己也整理一下。
+##Apache
+Apache属于HTTP服务器，我们所编写的静态页面可以运行在Apache服务器上。这个比较简单，也很通用。
+##Tomcat
+Tomcat准确地说是Web容器，属于轻量级应用服务器，在中小型系统和并发访问用户不是很多的场合下被普遍使用，是开发和调试JSP 程序的首选。当配置正确时，Apache 为HTML页面服务，而Tomcat 实际上运行JSP 页面和Servlet。另外，Tomcat和IIS、Apache等Web服务器一样，具有处理HTML页面的功能，另外它还是一个Servlet和JSP容器，独立的Servlet容器是Tomcat的默认模式。不过，Tomcat处理静态HTML的能力不如Apache服务器。所以在商业把Apache和tomcat进行结合使用是比较受欢迎的，大家可以点这里了解写[Apache和tomcat的结合方式](http://www.ibm.com/developerworks/cn/opensource/os-lo-apache-tomcat/)
+##JBoss
+JBoss是应用服务器，是一个基于J2EE的开放源代码的应用服务器。
+##Weblogic
+是美国bea公司出品的一个application server确切的说是一个基于Javaee架构的中间件，BEA WebLogic是用于开发、集成、部署和管理大型分布式Web应用、网络应用和数据库应用的Java应用服务器。将Java的动态功能和Java Enterprise标准的安全性引入大型网络应用的开发、集成、部署和管理之中。
