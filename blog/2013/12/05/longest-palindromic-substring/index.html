@@ -5,12 +5,14 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>正则表达式 - Coco</title>
+  <title>Longest Palindromic Substring - Coco</title>
   <meta name="author" content="Coco">
   
   
-  <meta name="description" content="正则表达式 分组 环视 贪婪 匹配">
-  <meta name="keywords" content="正则表达式 分组 环视 贪婪 匹配">
+  <meta name="description" content="最长回文子串是一个比较基础的问题，在面试中也会经常被问题，所以自己也尝试总结一下解决回文子串的方法。可以参见LeetCode题 方法1：暴力法 采用暴力法是能够解决最长回文子串问题的，但是所花费的时间是非常巨大的，一般都不能达到要求。 class Solution {
+public:
+string &hellip;">
+  <meta name="keywords" content="cocolighter algorithms data structure computer">
 
   <!-- http://t.co/dKP3o1e -->
   <meta name="HandheldFriendly" content="True">
@@ -18,7 +20,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://lvzongsheng.github.io/blog/2013/09/22/regular-expression">
+  <link rel="canonical" href="http://lvzongsheng.github.io/blog/2013/12/05/longest-palindromic-substring">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   
@@ -92,7 +94,7 @@
   
   <header>
     
-      <h1 class="entry-title">正则表达式</h1>
+      <h1 class="entry-title">Longest Palindromic Substring</h1>
     
     
       <p class="meta">
@@ -108,79 +110,110 @@
   
 
 
-<time datetime="2013-09-22T07:14:00+08:00" pubdate data-updated="true">Sep 22<span>nd</span>, 2013</time>
+<time datetime="2013-12-05T19:11:00+08:00" pubdate data-updated="true">Dec 5<span>th</span>, 2013</time>
         
       </p>
     
   </header>
 
 
-<div class="entry-content"><h2>正则表达式</h2>
+<div class="entry-content"><p>最长回文子串是一个比较基础的问题，在面试中也会经常被问题，所以自己也尝试总结一下解决回文子串的方法。可以参见<a href="http://oj.leetcode.com/problems/longest-palindromic-substring/">LeetCode题</a></p>
 
-<p>在对文本进行分析处理的时候，少不了会使用正则表达式进行匹配和替换。本文是对自己在学习正则表达式的一些总结。<br/>
-正则表达式定义：正则表达式是描述一组字符串的特征的模式，用来匹配特定的字符串。<br/>
-在介绍正则表达式之前，说几个在线的测试正则表达式的工具：<br/>
- + <a href="http://www.regexpal.com">Regexpal</a><br/>
-它是一个在线的用Javascript实现的正则表达式处理器。它不是正则表达式的完整实现，因此功能并不完整，优点是简洁易用，易于上手。<br/>
- + <a href="http://gskinner.com/RegExr">RegExr</a><br/>
- RegExr内嵌在Flex3中且依赖于ActionScript正则表达式引擎，其使用的正则表达式与Javascript相似。
- <!--more--></p>
+<h2>方法1：暴力法</h2>
 
-<h3>简单的模式匹配</h3>
+<p>采用暴力法是能够解决最长回文子串问题的，但是所花费的时间是非常巨大的，一般都不能达到要求。<br/></p>
 
-<pre><code>匹配字符串字面值 eg: abc 匹配abcde中的abc
-匹配数字 \d 或者 [0-9]
-匹配非数字字符 \D 或者 [^0-9] 或者 [^\d]
-匹配单词和非单词字符 \w 或者 [_a-zA-Z0-9]
-// \D和\w的区别\D会匹配空格、标点符号（引号、连字符、反斜杠、方括号）等字符，而\w不会，它只匹配字母、数字和下划线。
-匹配非单词字符 \W
-匹配空白符 \a 或者[ \t\n\r] 包括空格、制表符、换行符、回车符
+<pre><code>class Solution {
+public:
+string longestPalindrome(string s) {
+    // IMPORTANT: Please reset any member data you declared, as
+    // the same Solution instance will be reused for each test case.
+    int index1 = 0, index2 = 0;
+    int begin = 0, end = 0;
+    int max = 0;
+    for(int i=0; i&lt;s.length();i++){
+        for(int j=i;j&lt;s.length();j++){
+            index1 = i;
+            index2 = j;
+            while(index1&lt;=index2){
+                if(s.at(index1)!=s.at(index2)){
+                    break;
+                }else{
+                    index1++;
+                    index2--;
+                }
+            }
+            if(index1&gt;index2 &amp;&amp; j-i+1&gt;max){
+                begin = i;
+                end = j;
+                max = j-i+1;
+            }
+        }
+    }
+    return s.substr(begin,end-begin+1);
+}
+};
 </code></pre>
 
-<p>在正则表达式中，有大小写的匹配符一般都是相反的作用，也可以使用^来进行取反。</p>
+<p>从上面的代码中可以知道，暴力解法的时间复杂度为O(N<sup>3</sup>),但我们也可以对暴力发进行一定的优化。我们从字符串的最长值向0进行循环，这样可以尽快的找到最长子串。这里就不写代码了。</p>
 
-<h3>边界</h3>
+<!--More-->
 
-<pre><code>行的起始和结束 ^ $
-单词边界与非单词边界 \b \B
-\\ \b是零宽度断言，表面山会匹配空格或者行起始，但实际上它匹配的是个零宽度的不存在的东西。
-使用元字符字面值 \Q \E eg:\Q$\E
+
+<h2>动态规划法</h2>
+
+<p>我们可以采用动态规划的方法来求解。暴力解法之所以时间复杂度高，因为在求解过程中有很多的重复计算，打个简单地比方说：如果P不是回文子串，则aPb这种形式的也不是回文子串，以此类推则可以找到动态规划的算法。<br/>
+动态规划的方法如下：</p>
+
+<pre><code>P[i][j] = true 表示i~j这个子串是为回文子串，否则则不是。  
+那么我们可知
+P[i][j] = true if i&gt;=j
+P[i][j] = true if S[i]==S[j] and P[i+1][j-1] = true
+else P[i][j] = false
 </code></pre>
 
-<p>零宽度断言是指匹配宽度为0，满足一定条件的断言。零宽度断言用于查找在某些内容（但不包括这些内容）之前或者之后的东西。所以像\b ^ $都是零宽度断言符。</p>
+<p>使用动态规划的方法的时间复杂度是O(N<sup>2</sup>)其动态规划的实现方法如下：<br/></p>
 
-<h3>选择、分组和后向引用</h3>
+<pre><code>class Solution {
+public:
+string longestPalindrome(string s) {
+    // IMPORTANT: Please reset any member data you declared, as
+    // the same Solution instance will be reused for each test case.
+    bool isPalindrome[s.length()][s.length()];
+    for(int i=0;i&lt;s.length();i++){
+        for(int j=0;j&lt;s.length()-i;j++){
+            if(j==j+i){
+                isPalindrome[j][j+i] = true;
+            }else{
+                if(s[j]==s[j+i]){
+                    if(i&gt;1)
+                        if(isPalindrome[j+1][j+i-1])
+                            isPalindrome[j][j+i] = true;
+                        else
+                            isPalindrome[j][j+i] = false;
+                    else
+                        isPalindrome[j][j+i] = true;
+                }else{
+                    isPalindrome[j][j+i] = false;
+                }
+            }
+        }
+    }
 
-<p>选择使用的()中间用|分割，eg:(the|The|THE),值得注意的是使用()也是一次分组。<br/>
-捕获分组用的是()，可以通过后向引用重用捕获的内容，\1.<br/>
-非捕获分组用的是(?:)<br/>
-在实际的字符串匹配中，选择，分组和后向引用是非常常见的功能，所以建议大家好好学习并掌握。</p>
+    for(int i=s.length()-1; i&gt;=0; i--){
+        for(int j=0;j&lt;s.length()-i;j++){
+            if(isPalindrome[j][j+i])
+                return s.substr(j,i+1);
+        }
 
-<h3>量词</h3>
-
-<p>量词本身没有什么难度，但在实际的应用中还是会存在一下难度，其中很重要的是贪心与懒惰匹配。
-量词自身是贪心的，贪心的量词会先尝试匹配整个字符串，如果失败则退一个字符后再次尝试，这个就是正则匹配回溯的过程，所以整个运算量比较大。<br/>
-而懒惰的量词采用了另外一个策略，它从目标位置开始匹配，每次检查字符串的一个字符。懒惰量词需要在普通量词后面加一个？<br/>
-占有量词会覆盖整个目标然后尝试寻找匹配内容，但它只尝试一次，不会回溯。占有量词是在普通量词后面添加一个+<br/></p>
-
-<pre><code>举个简单的例子：“simple sample”
-贪婪模式 s.+e 匹配simple sample
-懒惰模式 s.+?e 匹配simple
-占有模式 s.++e 匹配失败
+    }
+}
+};
 </code></pre>
 
-<h3>环视</h3>
+<h2>Manacher算法</h2>
 
-<p>环视是一种非捕获分组，它根据某个模式之前或之后的内容匹配其他模式，环视也称为零宽度断言。<br/>
-环视包括正前瞻，反前瞻，正后顾，反后顾。</p>
-
-<pre><code>正前瞻：eg (?i)ancyent (?=marinere)
-反前瞻：eg (?i)ancyent (?!marinere)
-正后顾：eg (?i)(?&lt;=ancyent) marinere
-反后顾：eg (?i)(?&lt;!ancyent) marinere
-</code></pre>
-
-<p>本文提到的都是正则表达式中最常用，最重要的几个点，在实际使用中会衍生出各种复杂的表达式，归根到底正则表达式是一种组合的艺术，剖析来看没什么神奇之处，一旦组合到一起，便是让人眼花缭乱。</p>
+<p>虽然动态规划的方法性能得到了提高，但还是在平方级上的，而使用Manacher算法，时间复杂度为O(N)。大家可以<a href="http://www.cnblogs.com/biyeymyhjob/archive/2012/10/04/2711527.html">参考该博文</a></p>
 </div>
 
 
@@ -203,7 +236,7 @@
   
 
 
-<time datetime="2013-09-22T07:14:00+08:00" pubdate data-updated="true">Sep 22<span>nd</span>, 2013</time>
+<time datetime="2013-12-05T19:11:00+08:00" pubdate data-updated="true">Dec 5<span>th</span>, 2013</time>
       
 
 
@@ -235,10 +268,8 @@ var jiathis_config = {data_track_clickback:'true'};
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2013/09/06/tree-traversals/" title="Previous Post: 二叉树的遍历">&laquo; 二叉树的遍历</a>
+        <a class="basic-alignment left" href="/blog/2013/11/29/servers/" title="Previous Post: Apache, Tomcat, JBoss和Weblogic比较">&laquo; Apache, Tomcat, JBoss和Weblogic比较</a>
       
-      
-        <a class="basic-alignment right" href="/blog/2013/11/26/etl-and-pdi/" title="Next Post: ETL and Pentaho Data Integraton">ETL and Pentaho Data Integraton &raquo;</a>
       
     </p>
   </footer>

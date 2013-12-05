@@ -9,7 +9,9 @@
   <meta name="author" content="Coco">
   
   
-  <meta name="description" content="谈到企业级配置文件的管理，我们先谈谈在本文中涉及的企业级配置文件的含义。众所周知，在工程项目中，我们会使用到各种各样的配置文件，以方便管理在工程项目中所用到的各种信息。除了在工程项目中，各种应用也会有自己的配置文件和用户配置文件。可以说配置文件是无处不在的。但这里我们不谈以上的配置， &hellip;">
+  <meta name="description" content="最长回文子串是一个比较基础的问题，在面试中也会经常被问题，所以自己也尝试总结一下解决回文子串的方法。可以参见LeetCode题 方法1：暴力法 采用暴力法是能够解决最长回文子串问题的，但是所花费的时间是非常巨大的，一般都不能达到要求。 class Solution {
+public:
+string &hellip;">
   <meta name="keywords" content="cocolighter algorithms data structure computer">
 
   <!-- http://t.co/dKP3o1e -->
@@ -95,6 +97,137 @@
       
   <header>
     
+      <h1 class="entry-title"><a href="/blog/2013/12/05/longest-palindromic-substring/">Longest Palindromic Substring</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-12-05T19:11:00+08:00" pubdate data-updated="true">Dec 5<span>th</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>最长回文子串是一个比较基础的问题，在面试中也会经常被问题，所以自己也尝试总结一下解决回文子串的方法。可以参见<a href="http://oj.leetcode.com/problems/longest-palindromic-substring/">LeetCode题</a></p>
+
+<h2>方法1：暴力法</h2>
+
+<p>采用暴力法是能够解决最长回文子串问题的，但是所花费的时间是非常巨大的，一般都不能达到要求。<br/></p>
+
+<pre><code>class Solution {
+public:
+string longestPalindrome(string s) {
+    // IMPORTANT: Please reset any member data you declared, as
+    // the same Solution instance will be reused for each test case.
+    int index1 = 0, index2 = 0;
+    int begin = 0, end = 0;
+    int max = 0;
+    for(int i=0; i&lt;s.length();i++){
+        for(int j=i;j&lt;s.length();j++){
+            index1 = i;
+            index2 = j;
+            while(index1&lt;=index2){
+                if(s.at(index1)!=s.at(index2)){
+                    break;
+                }else{
+                    index1++;
+                    index2--;
+                }
+            }
+            if(index1&gt;index2 &amp;&amp; j-i+1&gt;max){
+                begin = i;
+                end = j;
+                max = j-i+1;
+            }
+        }
+    }
+    return s.substr(begin,end-begin+1);
+}
+};
+</code></pre>
+
+<p>从上面的代码中可以知道，暴力解法的时间复杂度为O(N<sup>3</sup>),但我们也可以对暴力发进行一定的优化。我们从字符串的最长值向0进行循环，这样可以尽快的找到最长子串。这里就不写代码了。</p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2013/12/05/longest-palindromic-substring/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2013/11/29/servers/">Apache, Tomcat, JBoss和Weblogic比较</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-11-29T18:49:00+08:00" pubdate data-updated="true">Nov 29<span>th</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>每当提起Apache等，我相信有不少人也很难说清楚它们各自属于什么，今天抽空自己也整理一下。</p>
+
+<h2>Apache</h2>
+
+<p>Apache属于HTTP服务器，我们所编写的静态页面可以运行在Apache服务器上。这个比较简单，也很通用。</p>
+
+<h2>Tomcat</h2>
+
+<p>Tomcat准确地说是Web容器，属于轻量级应用服务器，在中小型系统和并发访问用户不是很多的场合下被普遍使用，是开发和调试JSP 程序的首选。当配置正确时，Apache 为HTML页面服务，而Tomcat 实际上运行JSP 页面和Servlet。另外，Tomcat和IIS、Apache等Web服务器一样，具有处理HTML页面的功能，另外它还是一个Servlet和JSP容器，独立的Servlet容器是Tomcat的默认模式。不过，Tomcat处理静态HTML的能力不如Apache服务器。所以在商业把Apache和tomcat进行结合使用是比较受欢迎的，大家可以点这里了解写<a href="http://www.ibm.com/developerworks/cn/opensource/os-lo-apache-tomcat/">Apache和tomcat的结合方式</a></p>
+
+<h2>JBoss</h2>
+
+<p>JBoss是应用服务器，是一个基于J2EE的开放源代码的应用服务器。</p>
+
+<h2>Weblogic</h2>
+
+<p>是美国bea公司出品的一个application server确切的说是一个基于Javaee架构的中间件，BEA WebLogic是用于开发、集成、部署和管理大型分布式Web应用、网络应用和数据库应用的Java应用服务器。将Java的动态功能和Java Enterprise标准的安全性引入大型网络应用的开发、集成、部署和管理之中。</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
       <h1 class="entry-title"><a href="/blog/2013/11/28/property-management/">企业级配置文件等的管理</a></h1>
     
     
@@ -134,25 +267,12 @@
 在我们的产品需求中我们需要往客户要求的FTP中发送文件，为了能在不同的环境下进行测试，PROD和DEV，UAT所需的FTP账号是不同的。我们为了以后修改方便，把这些账号信息作为配置文件放在CMS系统中。但又一次开发人员不PROD的code给全部Refresh到DEV上，这直接造成了DEV的配置文件和PROD的配置是一样的，所以发生了一次很严重的产品事故。
 其实原因很简单，就是一次人为不注意引起的，但从IT人眼中，人是不可能避免犯错的。所以如何避免环境不一致而存在的客观隐患，则变的尤为重要。</p>
 
-<h2>解决方案</h2>
-
-<h3>1 不同环境的所有配置应统一成一份</h3>
-
-<p>统一成一份的好处是不会发生硬拷贝导致的错误。所以的配置分环境统一成一份文件，然后工程根据不同得运行环境调用不同的配置信息。</p>
-
-<h3>2 不同环境的配置文件名应含环境名</h3>
-
-<p>不同环境的配置文件名含有环境名也能避免人为拷贝而造成的损失，这种做法也需要的Code中判断环境从而选择该环境下得配置文件进行读取。相比第一种解决方案，第二种方案更为清晰，但是维护成本要高一点，毕竟不同环境都要维护一份。</p>
-
-<h3>3 直接Hard Code在代码中</h3>
-
-<p>这个方案可能在很多人看来是不可取的，因为维护起来比较不方便，但我们也要考虑一个问题，配置文件的维护也是高成本的，而且相比配置文件，Hard Code在代码中是一种更为安全的策略。这种解决方案适合在这个配置信息几乎不改变的情况下或者是该文件的安全性较高，并且使用地方很小的情况下。</p>
-
-<h3>4 进行权限管理</h3>
-
-<p>如果想从本质上解决这个问题的，可以对各个环境进行权限管理，比如说DEV环境不可能调用到PROD的任何资源，这也在根本上杜绝了这些问题。但是现实中为了测试，或者为了方便，总是会打破这个规则，这也将是很棘手的问题。在这个问题我们可以建立Password Matrix里对账号等进行管理。</p>
 </div>
   
+  
+    <footer>
+      <a rel="full-article" href="/blog/2013/11/28/property-management/">Read on &rarr;</a>
+    </footer>
   
 
 
@@ -364,6 +484,14 @@
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2013/12/05/longest-palindromic-substring/">Longest Palindromic Substring</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/11/29/servers/">Apache, Tomcat, JBoss和Weblogic比较</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2013/11/28/property-management/">企业级配置文件等的管理</a>
       </li>
     
@@ -373,14 +501,6 @@
     
       <li class="post">
         <a href="/blog/2013/09/22/regular-expression/">正则表达式</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2013/09/06/tree-traversals/">二叉树的遍历</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2013/08/28/octopress-setup/">octopress_setup</a>
       </li>
     
   </ul>
