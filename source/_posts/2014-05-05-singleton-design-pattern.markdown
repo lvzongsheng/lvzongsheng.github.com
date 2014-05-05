@@ -45,6 +45,7 @@ categories:
       }
     }
 在该实现中，instance必须要定义成volatile，否则该方法还是会出现多个实例的情况。
+<!--More-->
 ##Static Block Initialization
 如果我们清楚了Java的初始化顺序，则可以使用静态代码块来实现单例模式。
     public class StaticBlockSingleton{
