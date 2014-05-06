@@ -9,7 +9,7 @@
   <meta name="author" content="Coco">
   
   
-  <meta name="description" content="说起单例模式，大家应该都不会陌生。下面介绍一种最常见的Java实现方式。 Eager Initialization 这个实现方式是我们平时最容易写出来的实现方式。代码如下： public class EagerSingleton{ private static volatile &hellip;">
+  <meta name="description" content="有限缓冲区是很基本的同步问题。当给定一个大小固定的缓冲区时，如何同步充值对缓冲区的插入和删除，也是面试或者平时容易遇到的问题。在操作系统中我们通常会采用信号量来实现有限缓冲区问题。 首先我们定义三个信号量，分别为 empty - 表示有限缓冲区可以插入的数据数量，初始化时等于有限缓冲区的大小 &hellip;">
   <meta name="keywords" content="cocolighter algorithms data structure computer">
 
   <!-- http://t.co/dKP3o1e -->
@@ -95,6 +95,70 @@
       
   <header>
     
+      <h1 class="entry-title"><a href="/blog/2014/05/06/bounded-buffer/">有限缓冲区问题</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-05-06T18:40:00+08:00" pubdate data-updated="true">May 6<span>th</span>, 2014</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>有限缓冲区是很基本的同步问题。当给定一个大小固定的缓冲区时，如何同步充值对缓冲区的插入和删除，也是面试或者平时容易遇到的问题。在操作系统中我们通常会采用信号量来实现有限缓冲区问题。<br/><br/></p>
+
+<p>首先我们定义三个信号量，分别为</p>
+
+<pre><code>empty - 表示有限缓冲区可以插入的数据数量，初始化时等于有限缓冲区的大小
+full - 表示有限缓冲区中已经插入的数据数量，初始化时等于0
+mutex - 简单的理解就是互斥量，每次只允许插入或者删除操作。
+根据以上三个信号量，我们可以简单的实现有限缓冲区，代码如下：
+//插入操作
+empty.acquire();
+mutex.acquire();
+//do something;
+mutex.release();
+full.release();
+
+//删除操作
+full.acquire();
+mutex.acquire();
+//do something;
+mutex.release();
+empty.release();
+</code></pre>
+
+<p>而对于信号量，一个重要的原理就是必须保证PV操作的原子性，我们可以通过硬件或者软件的方式来实现。<br/><br/></p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2014/05/06/bounded-buffer/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
       <h1 class="entry-title"><a href="/blog/2014/05/05/singleton-design-pattern/">单例模式的Java实现</a></h1>
     
     
@@ -172,83 +236,12 @@
 
 <p>在该实现中，instance必须要定义成volatile，否则该方法还是会出现多个实例的情况。</p>
 
-<h2>Static Block Initialization</h2>
-
-<p>如果我们清楚了Java的初始化顺序，则可以使用静态代码块来实现单例模式。</p>
-
-<pre><code>public class StaticBlockSingleton{
-    private static final StaticBlockSingleton instance = null;
-    private StaticBlockSingleton(){}
-    static{
-        instance = new StaticBlockSingleton();
-    }
-    public static StaticBlockSingleton getIntance(){
-        return instance;
-    }
-}
-</code></pre>
-
-<p>该实现方式也有一个缺点，就是加入该类中有多个静态变量，而我们只想初始化其中部分变量的时候，我们不得不初始化不需要的变量。</p>
-
-<h2>Bill Pugh Solution</h2>
-
-<p>为了解决上述问题，可以使用静态内部类来实现。因为静态内部类只要在真正使用的时候才会被初始化。代码如下：</p>
-
-<pre><code>public class BillPughSingleton{
-    private BillPughSingleton(){}
-    private static class LazyHolder{
-        public static final BillPughSingleton instance = new BillPughSingleton();
-    }
-    public static BillPughSingleton getInstance(){
-        return LazyHolder.instance;
-    }
-}
-</code></pre>
-
-<h2>Using Enum</h2>
-
-<pre><code>public enum EnumSingleton{
-    INSTANCE;
-    public void someMethod(String param){}
-}
-</code></pre>
-
-<h2>Adding readResolver()</h2>
-
-<p>当我们的类需要被序列化的时候，这种情况很容易造成反序列化的类与instance不一致，为了解决这个问题，需要加入readResolver()方法，该方法在readObject()之后被调用，作用是得到单例模式的值。代码如下：</p>
-
-<pre><code>protected Object readResolver(){
-    return instance;
-}
-</code></pre>
-
-<h2>Adding Serial Version Id</h2>
-
-<p>而当序列化之后我们改变了原始的类，这是进行反序列化的时候，是会出现错误的，这个时候就需要制定Serial Version Id.代码如下：</p>
-
-<pre><code>private static final long serialVersionUID = 1L;
-</code></pre>
-
-<h2>Conclusion</h2>
-
-<p>所以，结合上述所说，我们可以使用如下代码来更好地实现单例模式。</p>
-
-<pre><code>public class Singleton{
-    private static final long serialVersionUID = 1L;
-    private Singleton(){}
-    private static class SingletonHolder{
-        public static final Singleton instance = new Singleton();
-    }
-    public static Singleton getInstance(){
-        return SingletonHolder.intance;
-    }
-    protected Object readResolver(){
-        return getInstace();
-    }
-}
-</code></pre>
 </div>
   
+  
+    <footer>
+      <a rel="full-article" href="/blog/2014/05/05/singleton-design-pattern/">Read on &rarr;</a>
+    </footer>
   
 
 
@@ -646,6 +639,10 @@ string longestPalindrome(string s) {
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2014/05/06/bounded-buffer/">有限缓冲区问题</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/05/05/singleton-design-pattern/">单例模式的Java实现</a>
       </li>
     
@@ -659,10 +656,6 @@ string longestPalindrome(string s) {
     
       <li class="post">
         <a href="/blog/2013/11/28/property-management/">企业级配置文件等的管理</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2013/11/26/etl-and-pdi/">ETL and Pentaho Data Integraton</a>
       </li>
     
   </ul>

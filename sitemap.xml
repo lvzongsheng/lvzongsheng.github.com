@@ -30,7 +30,11 @@
     </url>
     <url>
         <loc>http://lvzongsheng.github.io/blog/2014/05/05/singleton-design-pattern/</loc>
-        <lastmod>2014-05-05T22:29:23+08:00</lastmod>
+        <lastmod>2014-05-05T22:33:45+08:00</lastmod>
+    </url>
+    <url>
+        <loc>http://lvzongsheng.github.io/blog/2014/05/06/bounded-buffer/</loc>
+        <lastmod>2014-05-06T19:05:00+08:00</lastmod>
     </url>
     <url>
         <loc>http://lvzongsheng.github.io/about/</loc>
@@ -38,11 +42,11 @@
     </url>
     <url>
         <loc>http://lvzongsheng.github.io/blog/archives/</loc>
-        <lastmod>2014-05-05T22:29:23+08:00</lastmod>
+        <lastmod>2014-05-06T19:05:00+08:00</lastmod>
     </url>
     <url>
         <loc>http://lvzongsheng.github.io/</loc>
-        <lastmod>2014-05-05T22:29:23+08:00</lastmod>
+        <lastmod>2014-05-06T19:05:00+08:00</lastmod>
     </url>
     <url>
         <loc>http://lvzongsheng.github.io/interest/</loc>
