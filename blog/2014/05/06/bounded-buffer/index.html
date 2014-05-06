@@ -189,20 +189,20 @@ public class BoundedBuffer implements Buffer{
     public synchronized Oject remove(){}
 }
 
-public class Product implement Runnable{
+public class Product implements Runnable{
     BoundedBuffer bb;
     public Product(BoundedBuffer bb){
         this.bb = bb;
     }
     public void run(){
         while(true)
-            bb.insert(new Integer(3));
+            bb.insert(new String("test"));
     }
 }
 
-public class Consumer implement Runnable{
+public class Consumer implements Runnable{
     BoundedBuffer bb;
-    public Comsumer(BoundedBuffer bb){
+    public Consumer(BoundedBuffer bb){
         this.bb = bb;
     }
     public void run(){
