@@ -100,7 +100,7 @@ categories:
 		public static void main(String[] args){
 			Product p = new Product(bb);
 			Consumer c = new Consumer(bb);
-			Thread(p).start();
-			Thread(q).start();
+			new Thread(p).start();
+			new Thread(c).start();
 		}
 	}
